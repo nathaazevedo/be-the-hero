@@ -11,6 +11,11 @@ import heroesImg from '../../assets/heroes.png';
 export default function Logon() {
     const [id, setId] = useState('');
     const history = useHistory();
+    const userId = localStorage.getItem("userId");
+
+    if(userId != null){
+        history.push('/profile');
+    }
 
     async function handleLogin(e) {
         e.preventDefault();

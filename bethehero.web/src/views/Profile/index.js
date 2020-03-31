@@ -8,10 +8,15 @@ import logoImg from '../../assets/logo.svg';
 import { FiPower, FiTrash2 } from 'react-icons/fi';
 
 export default function Profile() {
-    const history = useHistory();
-    const [incidents, setIncidents] = useState([]);
     const userId = localStorage.getItem("userId");
     const userName = localStorage.getItem("userName");
+    const history = useHistory();
+    
+    if(userId == null){
+        history.push('/');
+    }
+
+    const [incidents, setIncidents] = useState([]);
 
     useEffect(() => {
         api.get('myIncidents', {

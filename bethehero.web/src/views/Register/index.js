@@ -8,14 +8,19 @@ import './styles.css';
 import logoImg from '../../assets/logo.svg';
 
 export default function Register() {
+    const userId = localStorage.getItem("userId");
+    const history = useHistory();
+
+    if(userId != null){
+        history.push('/profile');
+    }
+
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
     const [country, setCountry] = useState('');
-
-    const history = useHistory();
 
     async function handleRegister(e) {
         e.preventDefault();
